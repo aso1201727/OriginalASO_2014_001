@@ -1,15 +1,14 @@
 package com.example.originalaso_2014_001;
 
+import java.util.Random;
+
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
 
 public class MainActivity extends Activity {
 
@@ -24,7 +23,51 @@ public class MainActivity extends Activity {
                     .commit();
         }
     }
-
+    
+    public void onClick(View v) {
+    	// TODO 児童生成されたメソッド・スタブ
+    	switch(v.getId()) {
+    	case R.id.btnOK:
+    		//エディットテキスト内容から入力内容を取り出す。
+    		//EditText etv = (EditText)findViewById(R.id.edtName);
+    		//String inputMsg = etv.getText().toString();
+    		
+    		//Randomクラスのインスタンスを作る
+    		Random rnd = new Random();
+    		// 0～3の4パターンの数字をranに取得
+    		int ran = rnd.nextInt(4);
+    		
+    		// 生成して代入用のInttentインスタンス変数を用意
+    		Intent Intent = null;
+    		// ranの値によって処理を分ける
+    		switch(ran){
+    			case 0:
+    				// 0なら大吉ページへと飛ばす
+    				// インテントのインスタンスを生成
+    				Intent = new Intent(MainActivity.this, DaikitiActivity.class);
+    				//次画面のアクティビティ起動
+    				startActivity(Intent);
+    			case 1:
+    				// 1なら吉ページへと飛ばす
+    				// インテントのインスタンスを生成
+    				Intent = new Intent(MainActivity.this, TyukitiActivity.class);
+    				//次画面のアクティビティ起動
+    				startActivity(Intent);
+    			case 2:
+    				// 2なら凶ページへと飛ばす
+    				// インテントのインスタンスを生成
+    				Intent = new Intent(MainActivity.this, DaikyoActivity.class);
+    				//次画面のアクティビティ起動
+    				startActivity(Intent);
+    			case 3:
+    				// 3なら大凶ページへと飛ばす
+    				// インテントのインスタンスを生成
+    				Intent = new Intent(MainActivity.this, KyoActivity.class);
+    				//次画面のアクティビティ起動
+    				startActivity(Intent);
+    		}
+    	}
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
