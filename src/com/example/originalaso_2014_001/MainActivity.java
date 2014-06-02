@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,17 @@ public class MainActivity extends Activity {
         }
     }
     
-    public void onClick(View v) {
+    @Override
+	protected void onResume() {
+		// TODO 自動生成されたメソッド・スタブ
+		super.onResume();
+		// ボタンをIDで探してボタンを作る
+		Button btnOK = (Button)findViewById(R.id.btnOK);
+		// ボタン変数をリスナーを登録する。
+		btnOK.setOnClickListener(this);
+	}
+
+	public void onClick(View v) {
     	// TODO 児童生成されたメソッド・スタブ
     	switch(v.getId()) {
     	case R.id.btnOK:
@@ -47,24 +59,28 @@ public class MainActivity extends Activity {
     				Intent = new Intent(MainActivity.this, DaikitiActivity.class);
     				//次画面のアクティビティ起動
     				startActivity(Intent);
+    				break;
     			case 1:
     				// 1なら吉ページへと飛ばす
     				// インテントのインスタンスを生成
     				Intent = new Intent(MainActivity.this, TyukitiActivity.class);
     				//次画面のアクティビティ起動
     				startActivity(Intent);
+    				break;
     			case 2:
     				// 2なら凶ページへと飛ばす
     				// インテントのインスタンスを生成
     				Intent = new Intent(MainActivity.this, DaikyoActivity.class);
     				//次画面のアクティビティ起動
     				startActivity(Intent);
+    				break;
     			case 3:
     				// 3なら大凶ページへと飛ばす
     				// インテントのインスタンスを生成
     				Intent = new Intent(MainActivity.this, KyoActivity.class);
     				//次画面のアクティビティ起動
     				startActivity(Intent);
+    				break;
     		}
     	}
     }
