@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends Activity implements OnClickListener {
 
@@ -39,10 +40,10 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
     	// TODO 児童生成されたメソッド・スタブ
     	switch(v.getId()) {
-    	case R.id.btnOK:
+    	case R.id.btnOK: //OKボタンが押された
     		//エディットテキスト内容から入力内容を取り出す。
-    		//EditText etv = (EditText)findViewById(R.id.edtName);
-    		//String inputMsg = etv.getText().toString();
+    		EditText etv = (EditText)findViewById(R.id.edtName);
+    		String inputMsg = etv.getText().toString();
     		
     		//Randomクラスのインスタンスを作る
     		Random rnd = new Random();
@@ -57,31 +58,26 @@ public class MainActivity extends Activity implements OnClickListener {
     				// 0なら大吉ページへと飛ばす
     				// インテントのインスタンスを生成
     				Intent = new Intent(MainActivity.this, DaikitiActivity.class);
-    				//次画面のアクティビティ起動
-    				startActivity(Intent);
     				break;
     			case 1:
     				// 1なら吉ページへと飛ばす
     				// インテントのインスタンスを生成
     				Intent = new Intent(MainActivity.this, TyukitiActivity.class);
-    				//次画面のアクティビティ起動
-    				startActivity(Intent);
     				break;
     			case 2:
     				// 2なら凶ページへと飛ばす
     				// インテントのインスタンスを生成
     				Intent = new Intent(MainActivity.this, DaikyoActivity.class);
-    				//次画面のアクティビティ起動
-    				startActivity(Intent);
     				break;
     			case 3:
     				// 3なら大凶ページへと飛ばす
     				// インテントのインスタンスを生成
     				Intent = new Intent(MainActivity.this, KyoActivity.class);
-    				//次画面のアクティビティ起動
-    				startActivity(Intent);
     				break;
     		}
+    		Intent.putExtra("name",inputMsg);
+    		// 次画面のアクティビティ起動
+    		startActivity(Intent);
     	}
     }
 
